@@ -47,7 +47,7 @@ def change_light(lights, colors, idx):
         l.xy = colors[c_array[color_count]]
         color_count+=1
 
-sleep_time = 2
+sleep_time = 5
 
 b = Bridge('192.168.1.16')
 
@@ -69,12 +69,17 @@ fan2 = light_names['Fan 2']
 fan1 = light_names['Fan 1']
 desk = light_names['Desk lamp']
 sixties = light_names['60s lamp']
-office_lights = [fan1, fan2, desk, sixties]
+office_lights = [fan2, fan1, sixties, desk]
 
 
 # Turn on all the lights
 for l in office_lights:
     l.on = True
+    if l.name == 'Fan 2':
+        l.brightness = 254
+    else:
+        l.brightness = 127
+    
     
 time.sleep(3)
 
