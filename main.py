@@ -16,8 +16,6 @@ def rgb_to_xy(red, green, blue):
     # convert xyz to xy
     x = x / (x + y + z)
     y = y / (x + y + z)
-
-    # TODO check color gamut if known
      
     return [x, y]
 
@@ -38,7 +36,7 @@ def color_position(idx):
     return color_array
 
 # this will change all the lights at one time
-# the idx is the primary dcolor on the tree
+# the idx is the primary color on the tree
 def change_light(lights, colors, idx):
     c_array = color_position(idx)
     color_count = 0
@@ -51,11 +49,11 @@ sleep_time = 5
 
 b = Bridge('192.168.1.16')
 
-# If the app is not registered and the button is not pressed, press the button and call connect() (this only needs to be run a single time)
+# don't forget to press the button!!!
 b.connect()
 b.get_api()
 
-# red, gree, yellow, blue
+# red, green, yellow, blue
 r_xy = rgb_to_xy(1.0, 0, 0)
 g_xy = rgb_to_xy(0, 1.0, 0)
 y_xy = rgb_to_xy(1.0, 0.45, 0)
